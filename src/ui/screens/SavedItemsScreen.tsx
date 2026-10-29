@@ -12,6 +12,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 import { RootStackParamList } from '../navigation/navigationRoutes';
+import { ProductEntity } from '../../models/catalog';
 import { useFavorites } from '../../hooks/useFavorites';
 import { useBasket } from '../../hooks/useBasket';
 import { FeedbackView } from '../elements/FeedbackView';
@@ -24,7 +25,7 @@ export const SavedItemsScreen: React.FC = () => {
   const { favorites, toggleFavorite, clearFavorites } = useFavorites();
   const { addItem } = useBasket();
 
-  const handleMoveToBasket = (item: (typeof favorites)[0]) => {
+  const handleMoveToBasket = (item: ProductEntity) => {
     addItem(item, 1);
     Alert.alert('Thành công', `Đã chuyển "${item.title}" vào giỏ hàng.`);
   };

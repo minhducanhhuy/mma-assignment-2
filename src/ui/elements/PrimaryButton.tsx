@@ -58,7 +58,16 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
     }
   };
 
-  const sizeStyle = styles[`size_${size}`];
+  const getSizeStyle = () => {
+    switch (size) {
+      case 'sm':
+        return styles.size_sm;
+      case 'lg':
+        return styles.size_lg;
+      default:
+        return styles.size_md;
+    }
+  };
 
   return (
     <TouchableOpacity
@@ -66,7 +75,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       style={[
         styles.base,
         getContainerStyle(),
-        sizeStyle,
+        getSizeStyle(),
         (disabled || loading) && styles.disabled,
         style,
       ]}
